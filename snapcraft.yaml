@@ -1,31 +1,31 @@
-name: zola 
+name: zola-akasolace
 version: 0.21.0
-summary: A fast static site generator in a single binary with everything built-in.
+summary: Testing app for zola
 description: |
-  A fast static site generator in a single binary with everything built-in.
-  https://www.getzola.org
+  Testing app for zola
+license: MIT
 
-base: core18
-grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+base: core22
+grade: stable
+confinement: strict
+
+parts:
+  zola:
+    plugin: rust
+    rust-channel: stable
+    source: https://github.com/akasolace/zola.git
+    source-tag: v0.21.0
+    build-packages:
+      - build-essential
+      - cmake
+      - pkg-config
+      - libssl-dev
 
 apps:
   zola:
-    command: zola
+    command: bin/zola
     plugs:
       - home
       - network
       - network-bind
-
-parts:
-  zola:
-    source-type: git
-    source: https://github.com/getzola/zola.git
-    source-tag: v0.21.0
-    plugin: rust
-    rust-channel: stable
-    build-packages:
-    - build-essential
-    - cmake
-    - libssl-dev
-    - pkg-config
+      - removable-media
