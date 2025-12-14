@@ -1,4 +1,4 @@
-name: zola
+name: zola-akasolace
 version: 0.21.0
 title: Zola
 summary: A fast static site generator in a single binary with everything built-in.
